@@ -23,7 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://localhost/LatihanWebProgII/';
+
+$config['assets'] = $config['base_url'].'Assets/';
+$config['css']   = $config['assets'].'css/';
+$config['fonts']   = $config['assets'].'fonts/';
+$config['js']   = $config['assets'].'js/';
+$config['tables']   = $config['assets'].'tables/';
 
 /*
 |--------------------------------------------------------------------------
