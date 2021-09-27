@@ -32,7 +32,8 @@ class Admin extends CI_Controller {
         else{
             $data = [
                 'idpustakawan' => $cekUser['id_pustakawan'],
-                'enid' => sha1($cekUser['id_pustakawan'])
+                'enid' => sha1($cekUser['id_pustakawan']),
+                'username' => $cekUser['nama_pustakawan'],
 
             ];
             $this->session->set_userdata($data);
@@ -48,5 +49,12 @@ class Admin extends CI_Controller {
     public function dashboard()
     {
         $this->load->view('Admin/login/dashboard');
+    }
+    public function logout()
+    {
+        $this->load->library('session');
+        $res = $this->session->session_destroy;
+
+        redirect('admin');
     }
 }
