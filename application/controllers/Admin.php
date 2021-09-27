@@ -53,7 +53,7 @@ class Admin extends CI_Controller {
     public function logout()
     {
         $this->load->library('session');
-        $res = $this->session->session_destroy;
+        $res = $this->session->sess_destroy();
 
         redirect('admin');
     }
