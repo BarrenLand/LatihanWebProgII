@@ -61,7 +61,7 @@
                                         <a href="<?php echo base_url() ?>admin/edit_data_anggota/<?php echo $enkrip ?>" title="edit">
                                             <button class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button>
                                         </a>
-                                        <a href="#" title="hapus" onclick="doDelete('<?php echo $enkrip ?>')">
+                                        <a href="<?php echo base_url() ?>admin/hapus_data_anggota/<?php echo $enkrip ?>" title="edit" onclick="return confirm('Yakin akan dihapus?')">
                                             <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                                         </a>
                                     </td>
@@ -74,22 +74,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function doDelete(id_anggota) {
-        swal({
-                title: "Delete Data Anggota?",
-                text: "Data ini akan terhapus permanent",
-                icon: "warning",
-                buttons: true,
-                dangerMode: false,
-            })
-            .then(ok => {
-                if (ok) {
-                    window.location.href = '<?php echo base_url() ?>admin/hapus_data_anggota/' + id_anggota;
-                } else {
-                    $(this).removeAttr('disabled')
-                }
-            })
-    }
-</script>

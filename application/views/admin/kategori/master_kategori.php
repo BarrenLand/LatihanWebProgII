@@ -52,22 +52,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function doDelete(idKategori) {
-        swal({
-                title: "Delete Data Kategori Buku?",
-                text: "Data ini akan terhapus permanent",
-                icon: "warning",
-                buttons: true,
-                dangerMode: false,
-            })
-            .then(ok => {
-                if (ok) {
-                    window.location.href = '<?php echo base_url() ?>admin/hapusKategori/' + idKategori;
-                } else {
-                    $(this).removeAttr('disabled')
-                }
-            })
-    }
-</script>
