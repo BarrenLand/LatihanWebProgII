@@ -23,11 +23,49 @@ if($id=="" or $enkrip!=sha1($id)){
 <link href="<?php echo config_item('css');?>datepicker3.css" rel="stylesheet">
 <link href="<?php echo config_item('css');?>styles.css" rel="stylesheet">
 <link href="<?php echo config_item('css');?>bootstrap-table.css" rel="stylesheet">
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
 
+<script type="text/javascript">
+	function harusangka(jumlah){
+		var karakter=(junlah.which)?jumlah.which:event.keyCode
+		if (karakter>31&&(karakter<48||karakter>57))
+			return false;
+		return true;
+	}
+</script>
+<script type="text/javascript">
+	function getkey(e){
+		if(window.event)
+		return window.event.keycode;
+		else if (e)
+		return e.which;
+		else return null;
+	}
+	function goodchars(e,gooods,field){
+		var key,keychar;
+		key=getkey(e);
+		if(key==null) return true;
+
+		keychar=string.fromCharCode(key);
+		keychar=keychar.toLowerCase();
+		goods=goods.toLowerCase;
+
+		if(goods.indexOf(keychar)!=-1)
+		return true;
+		if(key==null||key==0||key==8||key==9||key==27)
+		return true;
+
+		if(key==13){
+			var i;
+			for (i=0;i<field.form.elements.length; i++)
+			if(field==form.elements.length[i])
+			break;
+			i=(i+1)%field.form.elements.length;
+			field.form.elements[i].focus();
+			return false;
+		};
+		return false;
+	}
+	</script>
 </head>
 
 <body>

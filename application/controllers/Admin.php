@@ -279,4 +279,143 @@ class Admin extends CI_Controller {
             </script>
             <?php
         }
+        public function master_buku()
+        {
+        $data['judul_web'] = "Master Data Buku";
+        $data['active_menu'] = "master_buku";
+        $data['data_buku'] = $this->ModelBuku->joinKategori()->result_array();
+
+        $this->load->view('admin/template_admin/header', $data);
+        $this->load->view('admin/template_admin/sidebar');
+        $this->load->view('admin/buku/master_buku',$data);
+        $this->load->view('admin/template_admin/footer');  
+        }
+        public function tambah_buku()
+        {
+        $where=['status_kategori_buku'=>'Aktif'];
+        $data['data_kategori']=$this->ModelKategori->getWhere($where)->result_array();
+        $data['judul_web']='Tambah Data Buku';
+        $data['active_menu']='tambah_buku';
+
+        $this->load->view('admin/template_admin/header', $data);
+        $this->load->view('admin/template_admin/sidebar');
+        $this->load->view('admin/buku/tambah_buku', $data);
+        $this->load->view('admin/template_admin/footer');
+        }
+        public function simpan_buku()
+        {
+        $hasil=$this->ModelBuku->autoNumber(['id_kategori_buku'=>$this->input->post('kategori',true)])->row_array();
+        $kode=$hasil['kode_buku'];
+
+        $noUrut=(int) substr($kode, 11, 5);
+        $noUrut++;
+        $id=$this->input->post('kategori',true)."-".date('ym')."-".sprintf('%05s', $noUrut);
+
+        $data=[
+            'kode_buku'=>$id,
+            'judul_buku'=>$this->input->post('judul_buku', true),
+            'penulis_buku'=>$this->input->post('penulis_buku', true),
+            'penerbit_buku'=>$this->input->post('penerbit_buku', true),
+            'tahun_terbit'=>$this->input->post('tahun_terbit', true),
+            'stok_buku'=>$this->input->post('stok_buku', true),
+            'id_kategori_buku'=>$this->input->post('kategori', true),
+        ];
+        $simpan = $this->ModelBuku->simpanBuku($data);
+        ?>
+        <script type="text/javascript">
+            document.location="<?php echo base_url('admin/master_buku');?>";
+        </script>
+        <?php
+        }
+        public function hapus_buku()
+        {
+            $where=['sha1(kode_buku)' => $this->uri->segment(3)];
+            $this->ModelBuku->hapusBuku($where);
+            ?>
+            <script type="text/javascript">
+                document.location="<?php echo base_url('admin/master_buku');?>";
+            </script>
+            <?php
+        }
+        public function edit_buku()
+        {
+            $data['judul_web']='Edit Data Buku';
+            $data['active_menu']='edit_buku';
+            
+            $where=['sha1(kode_buku)' => $this->uri->segment(3)];
+            $hasil=$this->ModelBuku->getWhere($where)->row_array();
+
+        $data['data_kategori']=$this->ModelKategori->getWhere(['status_kategori_buku'=>'Aktif'])->result_array();
+
+        $kodeBuku=['kodeBuku'=>$hasil['kode_buku']];
+
+        $this->session->set_userdata($kodeBuku);
+
+        $dataEdit = [
+            'judul' => $hasil['judul_buku'],
+            'penulis' => $hasil['penulis_buku'],
+            'penerbit' => $hasil['penerbit_buku'],
+            'tahun' => $hasil['tahun_terbit'],
+            'stok' => $hasil['stok_buku'],
+            'kategori' => $hasil['id_kategori_buku']
+        ];
+
+        $this->load->view('admin/template_admin/header', $data);
+        $this->load->view('admin/template_admin/sidebar', $data);
+        $this->load->view('admin/buku/edit_buku', $dataEdit);
+        $this->load->view('admin/template_admin/footer');      
+        }
+        public function update_buku()
+        {
+            $id = $this->session->userdata('kodeBuku');
+            $where = ['kode_buku' => $id];
+
+        if(substr($id,4)!=$this->input->psot('kategori', true))
+            {$hasil=$this->ModelBuku->autoNumber(['id_kategori_buku'=>$this->input->post('kategori', true)])->row_array();
+            $kode=$hasil['kode_buku'];
+        
+            $noUrut=(int)substr($kode,11,5);
+            $noUrut++;
+            $idBaru=$this->input->post('kategori',true)."-".date("ym")."-".sprintf("05%", $noUrut);
+
+            $data = [
+                'kode_buku' => $idBaru,
+                'judul_buku' => $this->input->post('judul_buku', true),
+                'penulis_buku' => $this->input->post('penulis_buku', true),
+                'penerbit_buku' => $this->input->post('penerbit_buku', true),
+                'tahun_terbit' => $this->input->post('trahun_terbit', true),
+                'stok_buku' => $this->input->post('stok_buku', true),
+                'id_kategori_buku' => $this->input->post('kategori', true),
+            ];
+        }
+        else{
+            $data = [
+                'judul_buku' => $this->input->post('judul_buku', true),
+                'penulis_buku' => $this->input->post('penulis_buku', true),
+                'penerbit_buku' => $this->input->post('penerbit_buku', true),
+                'tahun_terbit' => $this->input->post('trahun_terbit', true),
+                'stok_buku' => $this->input->post('stok_buku', true),
+                'id_kategori_buku' => $this->input->post('kategori', true),
+            ];
+        }
+    
+        $simpan = $this->ModelBuku->updateBuku($data, $where);
+            $this->session->unset_userdata('kodeBuku');
+            ?>
+            <script type="text/javascript">
+                document.location="<?php echo base_url('admin/master_buku');?>";
+            </script>
+            <?php
+        }
+        public function master_pustakawan()
+        {
+            $data['judul_web']='Master Data Pustakawan';
+            $data['active_menu']='master_pustakawan';
+            $data['data_anggota']=$this->ModelAdmin->getAll()->result_array();
+
+            $this->load->view('admin/template_admin/header', $data);
+            $this->load->view('admin/template_admin/sidebar');
+            $this->load->view('admin/pustakawan/master_pustakawan', $data);
+            $this->load->view('admin/template_admin/footer');
+        }       
 }

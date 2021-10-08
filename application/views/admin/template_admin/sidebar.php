@@ -7,7 +7,12 @@
             <li class="<?php if($active_menu=='master_data_anggota' || $active_menu=='tambah_data_anggota' || $active_menu=='edit_data_anggota'){echo 'active'; }else{echo ''; } ?>">
                 <a href="<?php echo base_url('admin/master_data_anggota');?>"><span class="glyphicon glyphicon-user"></span> Data Master Anggota</a></li>
             </li>
-			<li><a href="buku.html"><span class="glyphicon glyphicon-stats"></span> Data Master Buku</a></li>
+			<li class="<?php if($active_menu=='master_buku' || $active_menu=='tambah_buku' || $active_menu=='edit_buku'){echo 'active'; }else{echo ''; } ?>">
+                <a href="<?php echo base_url('admin/master_buku');?>"><span class="glyphicon glyphicon-user"></span> Data Master Buku</a></li>
+            </li>
+			<li class="<?php if($active_menu=='master_pustakawan' || $active_menu=='tambah_pustakawan' || $active_menu=='edit_pustakawan'){echo 'active'; }else{echo ''; } ?>">
+                <a href="<?php echo base_url('admin/master_pustakawan');?>"><span class="glyphicon glyphicon-user"></span> Data Master Pustakawan</a></li>
+            </li>
 			<li class="<?php if ($active_menu == 'master_kategori' || $active_menu == 'tambah_kategori' || $active_menu == 'edit_kategori') { echo "active"; } else { echo ''; } ?>">
             <a href="<?php echo base_url('admin/master_kategori') ?>"><span class="glyphicon glyphicon-list-alt"></span> Data Master Kategori</a></li>
 			<li><a href="peminjaman.html"><span class="glyphicon glyphicon-list-alt"></span> Peraturan Peminjaman</a></li>
