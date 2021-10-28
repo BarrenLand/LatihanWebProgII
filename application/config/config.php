@@ -25,10 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/LatihanWebProgII/';
 
-$config['assets'] = $config['base_url'].'Assets/';
-$config['css']   = $config['assets'].'css/';
-$config['fonts']   = $config['assets'].'fonts/';
-$config['js']   = $config['assets'].'js/';
+$config['assets']   = $config['base_url'].'assets/';
+$config['css']      = $config['assets'].'css/';
+$config['fonts']    = $config['assets'].'fonts/';
+$config['js']       = $config['assets'].'js/';
 $config['tables']   = $config['assets'].'tables/';
 
 /*

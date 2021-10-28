@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login Administrator</title>
+<title>login administrator</title>
 
 <link href="<?php echo config_item('css');?>bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo config_item('css');?>datepicker3.css" rel="stylesheet">
+<link href="<?php echo config_item('css');?>datapicker3.css" rel="stylesheet">
 <link href="<?php echo config_item('css');?>styles.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
@@ -21,17 +21,18 @@
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Login Administrator</div>
+				<div class="panel-heading">Login administrator</div>
 				<div class="panel-body">
 					<form role="form" method="post" action="<?php echo base_url('admin/autentikasi');?>">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autofocus="">
+								<input class="form-control" placeholder="username" name="username" type="text" autofocus="">
 							</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
 							</div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+							<button type="submit" class="btn btn-primary btn-block">login</button>
+							</div>
 						</fieldset>
 					</form>
 				</div>
@@ -46,7 +47,7 @@
 	<script src="<?php echo config_item('js');?>chart.min.js"></script>
 	<script src="<?php echo config_item('js');?>chart-data.js"></script>
 	<script src="<?php echo config_item('js');?>easypiechart.js"></script>
-	<script src="<?php echo config_item('js');?>easypiechart-data.js"></script>
+	<script src="<?php echo config_item('js');?>easypichart-data.js"></script>
 	<script src="<?php echo config_item('js');?>bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {

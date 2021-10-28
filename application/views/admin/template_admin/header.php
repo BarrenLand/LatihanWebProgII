@@ -1,7 +1,7 @@
 <?php
 $id = $this->session->userdata('idpustakawan');
 $enkrip =  $this->session->userdata('enid');
-$namauser = $this->session->userdata('namapustakawan');
+$namauser = $this->session->userdata('nama_pustakawan');
 
 if($id=="" or $enkrip!=sha1($id)){
     ?>
@@ -24,48 +24,55 @@ if($id=="" or $enkrip!=sha1($id)){
 <link href="<?php echo config_item('css');?>styles.css" rel="stylesheet">
 <link href="<?php echo config_item('css');?>bootstrap-table.css" rel="stylesheet">
 
-<script type="text/javascript">
-	function harusangka(jumlah){
-		var karakter=(junlah.which)?jumlah.which:event.keyCode
-		if (karakter>31&&(karakter<48||karakter>57))
+<script type ="text/javascript">
+	funcition harusangka(jumlah){
+		var karakter =(jumlah.which) ? jumlah.which : event.keyCode
+		if (karakter > 31 && (karakter < 48 || karakter > 57))
 			return false;
-		return true;
-	}
-</script>
-<script type="text/javascript">
-	function getkey(e){
-		if(window.event)
-		return window.event.keycode;
-		else if (e)
-		return e.which;
-		else return null;
-	}
-	function goodchars(e,gooods,field){
-		var key,keychar;
-		key=getkey(e);
-		if(key==null) return true;
 
-		keychar=string.fromCharCode(key);
-		keychar=keychar.toLowerCase();
-		goods=goods.toLowerCase;
-
-		if(goods.indexOf(keychar)!=-1)
-		return true;
-		if(key==null||key==0||key==8||key==9||key==27)
-		return true;
-
-		if(key==13){
-			var i;
-			for (i=0;i<field.form.elements.length; i++)
-			if(field==form.elements.length[i])
-			break;
-			i=(i+1)%field.form.elements.length;
-			field.form.elements[i].focus();
-			return false;
-		};
 		return false;
 	}
-	</script>
+</script>
+
+<script type ="text/javascript">
+	funcition getkey(e){
+		if (window.event)
+		return window.event.keyCode;
+		else if (e)
+		return e.which;
+		else
+		return null
+	}
+	funcition goodchars(e, goods, field){
+		var key, keychar;
+		key = getkey (e);
+		if (key == null) return true;
+
+		keychar = String.fromCharCode(key);
+		keychar = keychar.toLowerCase();
+		goods = goods.toLowerCase();
+
+		if (goods.indexOf(keychar) != -1)
+		return true;
+
+		if ( key==null || key==0 || key==8 || key==9 || key==27 )
+		return true;
+
+		if (key==13) {
+			var i;
+			for (i=0; i < field.form.elements.length; i++)
+			if (field ==  field.form.elements.length[i])
+			break;
+			i = (i+1) % field.form.elements.length;
+			field.form.elements.length[i].focus();
+			return false;
+		};
+
+		return false;
+	}
+</script>
+
+
 </head>
 
 <body>
@@ -83,7 +90,9 @@ if($id=="" or $enkrip!=sha1($id)){
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $namauser;?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="<?php echo base_url('admin/ganti_password');?>"><span class="glyphicon glyphicon-cog"></span> Ganti Password</a></li>
+							<li class="<?php if($active_menu=='edit_data_pass'){ echo' active';} else {echo ''; } ?> ">
+							<a href="<?php echo base_url('admin/edit_data_pass');?>"><span class="glyphicon glyphicon-list-alt"></span> setting</a>
+							</li>
 							<li><a href="<?php echo base_url('admin/logout');?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
 					</li>

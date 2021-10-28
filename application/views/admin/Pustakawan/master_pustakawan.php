@@ -28,17 +28,17 @@
                         <tbody>
                             <?php
                             $no = 0;
-                            foreach ($data_pustakwan as $data) {
-                                $enkripPustakawan = sha1($data['id_pustakawan']);
+                            foreach ($data_pustakawan as $pustakawan) {
+                                $enkripPustakawan=sha1($pustakawan['id_pustakawan']);
                             ?>
                                 <tr>
                                     <td data-sortable="true"><?php echo $no=$no+1 ?></td>
-                                    <td data-sortable="true"><?php echo $data['nama_pustakawan'] ?></td>
-                                    <td data-sortable="true"><?php echo $data['username_pustakawan'] ?></td>
-                                    <td data-sortable="true"><?php echo $data['akses_pustakawan'] ?></td>
+                                    <td data-sortable="true"><?php echo $pustakawan['nama_pustakawan'] ?></td>
+                                    <td data-sortable="true"><?php echo $pustakawan['username_pustakawan'] ?></td>
+                                    <td data-sortable="true"><?php echo $pustakawan['akses_pustakawan'] ?></td>
                                     <td data-sortable="true">
                                         <?php
-                                        if ($data['id_pustakawan']!="ADM001") {
+                                        if ($data['id_pustakawan']!="A00001") {
                                         ?>
                                         <a href="<?php echo base_url() ?>admin/edit_pustakawan/<?php echo $enkripPustakawan ?>" title="edit">
                                             <button class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button>

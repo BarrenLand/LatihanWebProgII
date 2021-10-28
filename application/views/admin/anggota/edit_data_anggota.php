@@ -1,83 +1,96 @@
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <ol class="breadcrumb">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-                            <li><a href="<?php echo base_url('admin/master_data_anggota') ?>">Master Data Anggota</a> </li>
-                            <li class="active">Edit Data Anggota</li>
-                        </ol>
-                        <br />
-                    </div>
-                    <form action="<?php echo base_url('admin/update_data_anggota') ?>" method="post">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+                   <div class="panel-body">
+		        	    <div class="row">
+                             <ol class="breadcrumb">
+							    <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+							    <li><a href= "<?php echo base_url('admin/master_data_anggota');?>">Master Data Anggota</a></li>
+                                <li class = "active"> edit data anggota </li>
+				        	</ol>
+                            <br />
+                        </div><!--/.row-->
+                    <form action="<?php echo base_url('admin/update_data_anggota');?>" method ="post">
+                        <div class="form-group col-md-6">
+                            <label>Nomor identitas </label>
+                        <input type="text" class="form-control" name="no_iden" value="<?php echo $no_iden;?>" placeholder=="masukan nomor identitas" required="required"></div>
+                        <div style="clear:both;"></div>
+                        
+                        <div class="form-group col-md-6">
+                            <label>Nama lengkap </label>
+                        <input type="text" class="form-control" name="nama_anggota" value="<?php echo $nama_anggota;?>" placeholder=="masukan nama lengkap anggota" required="required"></div>
+                        <div style="clear:both;"></div>
 
                         <div class="form-group col-md-6">
-                            <label>Nomor Identitas</label>
-                            <input class="form-control" type="text" name="no_iden" value="<?php echo $no_iden ?>" placeholder="Masukkan No Identitas" required="required">
-                        </div>
-                        <div style="clear: both;"></div>
+                            <label>Tempat lahir </label>
+                        <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $tempat_lahir;?>" placeholder=="masukan tempat lahir anggota" required="required"></div>
+                        <div style="clear:both;"></div>
+
                         <div class="form-group col-md-6">
-                            <label>Nama Lengkap</label>
-                            <input class="form-control" type="text" name="nama_anggota" value="<?php echo $nama_anggota ?>" placeholder="Masukkan Nama Lengkap" required="required">
-                        </div>
-                        <div style="clear: both;"></div>
+                            <label>Tanggal lahir </label>
+                        <input type="date" class="form-control" name="tanggal_lahir" value="<?php echo $tanggal_lahir;?>" placeholder=="masukan tanggal lahir anggota" required="required"></div>
+                        <div style="clear:both;"></div>
+
                         <div class="form-group col-md-6">
-                            <label>Tempat Lahir</label>
-                            <input class="form-control" type="text" name="tmpt_lahir" value="<?php echo $tempat_lahir ?>" placeholder="Masukkan Tempat Lahir" required="required">
-                        </div>
-                        <div style="clear: both;"></div>
-                        <div class="form-group col-md-6">
-                            <label>Tanggal Lahir</label>
-                            <input class="form-control" type="date" name="tgl_lahir" value="<?php echo $tanggal_lahir ?>" placeholder="Masukkan Tanggal Lahir" required="required">
-                        </div>
-                        <div style="clear: both;"></div>
-                        <div class="form-group col-md-6">
-                            <label>Jenis Kelamin</label>
-                            <select class="form-control" name="jekel" required="required">
+                            <label>Jenis kelamin </label>
+                            <select class="form-control" name="jenis_kelamin" required="required">
+                            <option value="">------</option>
                                 <?php
-                                if ($jekel == "L") {
-                                    $selL = "selected";
-                                    $selP = "";
-                                } elseif ($jekel == "P") {
-                                    $selL = "";
-                                    $selP = "selected";
-                                }
+                                    if($jenis_kelamin =="L"){
+                                        $selL="selected";
+                                        $selP ="";
+                                    }
+                                    elseif($jenis_kelamin == "P"){
+                                        $selL="";
+                                        $selP ="selected";
+                                    }
                                 ?>
-                                <option value="L" <?php echo $selL ?>>Laki Laki</option>
-                                <option value="P" <?php echo $selP ?>>Perempuan</option>
+                                <option value="L" <?php echo $selL;?>>Laki-Laki</option>
+                                <option value="P" <?php echo $selP;?>>Perempuan</option>
                             </select>
-                        </div>
-                        <div style="clear: both;"></div>
+                            </div>
+                        <div style="clear:both;"></div>
+
                         <div class="form-group col-md-6">
-                            <label>Status Anggota</label>
-                            <select name="status" id="status" class="form-control">
+                            <label>Status anggota </label>
+                            <select class="form-control" name="status_anggota" required="required">
+                            <option value="">------</option>
                                 <?php
-                                if ($status == "Guru") {
-                                    $selG = "selected";
-                                    $selS = "";
-                                } elseif ($status == "Siswa") {
-                                    $selG = "";
-                                    $selS = "selected";
-                                }
-
+                                    if($status_anggota =="Guru"){
+                                        $selG="selected";
+                                        $selS ="";
+                                    }
+                                    elseif($status_anggota =="Siswa"){
+                                        $selG="";
+                                        $selS="selected";
+                                    }
                                 ?>
-
-                                <option value="Guru" <?php echo $selG ?>>Guru</option>
-                                <option value="Siswa" <?php echo $selS ?>>Siswa</option>
+                                <option value="Guru" <?php echo $selG;?>>Guru</option>
+                                <option value="Siswa" <?php echo $selS;?>>Siswa</option>
                             </select>
-                        </div>
-                        <div style="clear: both;"></div>
+                            </div>
+                        <div style="clear:both;"></div>
+
                         <div class="form-group col-md-6">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="<?php echo base_url('admin/master_data_anggota') ?>"><button type="button" class="btn btn-danger">Batal</button></a>
-                        </div>
-                        <div style="clear: both;"></div>
+                            <button type="submit" class="btn btn-primary">update</button>
+                            <a href ="<?php echo base_url('admin/master_data_anggota');?>"><button type="button" class="btn btn-danger">batal</button></a>
+                            </div>
+                        <div style="clear:both;"></div>
                     </form>
                 </div>
             </div>
-        </div><!-- /.col-->
-    </div><!-- /.row -->
-
+        </div>
+     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
